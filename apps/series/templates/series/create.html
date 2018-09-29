@@ -1,28 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
+{% extends 'templates/index.html' %}
+
+{% block content %}
   <form action="/series/store">
-    <div>
-      <label for="name"></label>
+    <div class="form-group">
+      <label for="name">Nombre</label>
       <input type="text" id="name" name="name" required>
     </div>
-    <div>
-      <label for="year"></label>
+    <div class="form-group">
+      <label for="year">Año</label>
       <input type="number" id="year" name="year" required>
     </div>
-    <div>
-      <label for="rate"></label>
+    <div class="form-group">
+      <label for="rate">Calificación</label>
       <input type="number" id="rate" name="rate" required>
     </div>
-    <div>
-      <input type="submit" value="Crear">
+    <div class="float-button">
+      <div class="form-group">
+        <input class="paper-btn btn-secondary" type="submit" value="Crear">
+      </div>
     </div>
   </form>
-</body>
-</html>
+{% endblock %}

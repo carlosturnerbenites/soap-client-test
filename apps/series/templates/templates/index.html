@@ -1,0 +1,71 @@
+{% load static %}
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/lib/paper.css' %}">
+    <link rel="stylesheet" href="{% static '/custom.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <div class="row site">
+      <div class="sm-12 md-12 col">
+        <a href="/series/list">
+          <h1 class="margin-none text-secondary">YouAnimeList</h1>
+        </a>
+      </div>
+      <div class="sm-12 md-12 col background-secondary">
+        <span class="padding-small">
+          Anime
+        </span>
+        <span class="padding-small">
+          Manga
+        </span>
+        <span class="padding-small">
+          Comunidad
+        </span>
+        <span class="padding-small">
+          Industria
+        </span>
+        <span class="padding-small">
+          Ver
+        </span>
+        <span class="padding-small">
+          Tienda
+        </span>
+        <span class="padding-small">
+          Ayuda
+        </span>
+      </div>
+      <div class="sm-12 md-12 col background-secondary">
+        <h6 class="margin-none"> Bienvenido a YouAnimeList</h6>
+      </div>
+      <div class="sm-12 md-12 col">
+        <div class="paper">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+    <script>
+      function rate () {
+        let rates = document.querySelectorAll(".rate")
+        rates.forEach(el => {
+            let rate = parseInt(el.dataset.rate)
+
+            for (var i = 0; i < 10; i++) {
+              var star = document.createElement('span');
+              star.className = "fa fa-star";
+              if (i < rate) star.className += " checked"
+              el.appendChild(star)
+            }
+          })
+      }
+      rate()
+    </script>
+  </body>
+</html>

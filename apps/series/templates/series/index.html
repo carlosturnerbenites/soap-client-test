@@ -1,32 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <table>
-    <thead>
-      <tr>
-        <td>nombre</td>
-        <td>año</td>
-        <td>rate</td>
-        <td></td>
-        <td></td>
-      </tr>
-    </thead>
+{% extends 'templates/index.html' %}
+
+{% block content %}
+  <div class="row">
     {% for serie in series %}
-      <tr>
-        <td>{{serie.name}}</td>
-        <td>{{serie.year}}</td>
-        <td>{{serie.rate}}</td>
-        <td><a href="/series/{{serie.id}}/edit"> editar</a></td>
-        <td><a href="/series/{{serie.id}}/delete"> borrar</a></td>
-      </tr>
+      <div class="col col-3">
+        <div class="card">
+          <!--img src="https://picsum.photos/768" alt="Card example image"-->
+
+          <div class="card-body">
+            <h4 class="card-title">{{serie.name}}</h4>
+            <h5 class="card-subtitle">Estranda: {{serie.year}}</h5>
+            <p class="card-text">
+              <span class="rate" data-rate="{{serie.rate}}"></span>
+            </p>
+            <a href="/series/{{serie.id}}/edit" class="text-secondary"> editar</a>
+            <a href="/series/{{serie.id}}/delete" class="text-danger"> borrar</a>
+          </div>
+        </div>
+      </div>
     {% endfor %}
-      <a href="/series/create">nuevo</a>
-  </table>
-</body>
-</html>
+  </div>
+
+  <div class="float-button">
+    <a href="/series/create" class="paper-btn btn-success">nuevo</a>
+  </div>
+{% endblock %}
