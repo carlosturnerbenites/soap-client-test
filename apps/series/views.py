@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 from serapp.settings import WSDL_URL
 
 from zeep import Client
@@ -31,8 +32,7 @@ def store(request):
         request.GET.get('year'),
         request.GET.get('rate')
     )
-    # return render(request, 'series/index.html', context)
-    return series(request) # redirect('/series')
+    return redirect('/series/list')
 
 
 def update(request):
