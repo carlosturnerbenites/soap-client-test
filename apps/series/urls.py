@@ -5,8 +5,9 @@ from apps.series import views
 urlpatterns = [
   path('list/', views.series),
   path('create/', views.create),
-  path('edit/', views.edit),
+  path('<int:id>/edit/', views.edit),
+
   path('store/', views.store),
-  path('update/', views.update),
-  path('delete/', views.delete),
+  path('<int:id>/update/', views.update),
+  path('<int:id>/delete/', views.delete),
 ]

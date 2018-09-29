@@ -8,13 +8,25 @@
 </head>
 <body>
   <table>
+    <thead>
+      <tr>
+        <td>nombre</td>
+        <td>año</td>
+        <td>rate</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
     {% for serie in series %}
       <tr>
         <td>{{serie.name}}</td>
         <td>{{serie.year}}</td>
         <td>{{serie.rate}}</td>
+        <td><a href="/series/{{serie.id}}/edit"> editar</a></td>
+        <td><a href="/series/{{serie.id}}/delete"> borrar</a></td>
       </tr>
     {% endfor %}
+      <a href="/series/create">nuevo</a>
   </table>
 </body>
 </html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/series/{{serie.id}}/update">
+    <div>
+      <label for="name"></label>
+      <input type="text" id="name" value="{{serie.name}}" name="name" required>
+    </div>
+    <div>
+      <label for="year"></label>
+      <input type="number" id="year" value="{{serie.year}}" name="year" required>
+    </div>
+    <div>
+      <label for="rate"></label>
+      <input type="number" id="rate" value="{{serie.rate}}" name="rate" required>
+    </div>
+    <div>
+      <input type="submit" value="Actualizar">
+    </div>
+  </form>
+</body>
+</html>
