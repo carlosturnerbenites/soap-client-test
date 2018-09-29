@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'apps.series',
+    'apps.calc',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 WSDL_URL = 'http://localhost:8080/serapp-service/SeriesService?WSDL'
+WSDL_CALC_URL = 'http://localhost:8080/serapp-service/CaluladoraService?WSDL'

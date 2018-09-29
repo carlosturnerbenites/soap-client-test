@@ -20,4 +20,5 @@ from django.conf.urls import url, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^series/', include('apps.series.urls')),
+    url(r'^calc/', include('apps.calc.urls')),
 ]
