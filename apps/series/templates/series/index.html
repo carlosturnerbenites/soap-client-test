@@ -5,14 +5,15 @@
     {% for serie in series %}
       <div class="col col-3">
         <div class="card">
-          <!--img src="https://picsum.photos/768" alt="Card example image"-->
+          <img src="{{serie.malImg}}" alt="Card example image">
 
           <div class="card-body">
             <h4 class="card-title">{{serie.name}}</h4>
-            <h5 class="card-subtitle">Estranda: {{serie.year}}</h5>
+            <h5 class="card-subtitle"></h5>
             <p class="card-text">
               <span class="rate" data-rate="{{serie.rate}}"></span>
             </p>
+            <a href="{{serie.malLink}}" class="text-secondary"> mal</a>
             <a href="/series/{{serie.id}}/edit" class="text-secondary"> editar</a>
             <a href="/series/{{serie.id}}/delete" class="text-danger"> borrar</a>
           </div>

@@ -10,15 +10,19 @@ client = Client(WSDL_URL)
 def validate(request):
     schema = {
         'name': {'type': 'string'},
-        'year': {'type': 'integer', 'min': 1900, 'max': 2018},
         'rate': {'type': 'integer', 'min': 0, 'max': 10},
+        'episodes': {'type': 'integer', 'min': 0},
+        'mal_link': {'type': 'string'},
+        'mal_img': {'type': 'string'},
     }
     v = Validator(schema)
 
     data = {
         "name": request.GET.get('name'),
-        "year": int(request.GET.get('year')),
-        "rate": int(request.GET.get('rate'))
+        "rate": int(request.GET.get('rate')),
+        "episodes": int(request.GET.get('episodes')),
+        "mal_link": request.GET.get('mal_link'),
+        "mal_img": request.GET.get('mal_img'),
     }
     return v.validate(data)
 
@@ -42,10 +46,12 @@ def store(request):
     if (valid):
         data = {
             "name": request.GET.get('name'),
-            "year": int(request.GET.get('year')),
-            "rate": int(request.GET.get('rate'))
+            "rate": int(request.GET.get('rate')),
+            "episodes": int(request.GET.get('episodes')),
+            "mal_link": request.GET.get('mal_link'),
+            "mal_img": request.GET.get('mal_img'),
         }
-        series = client.service.create(data['name'], data['year'], data['rate'])
+        series = client.service.create(data['name'], data['rate'], data['episodes'], data['mal_link'], data['mal_img'])
         return redirect('/series/list')
     else:
         return redirect('/series/create')
@@ -56,10 +62,12 @@ def update(request, id):
     if (valid):
         data = {
             "name": request.GET.get('name'),
-            "year": int(request.GET.get('year')),
-            "rate": int(request.GET.get('rate'))
+            "rate": int(request.GET.get('rate')),
+            "episodes": int(request.GET.get('episodes')),
+            "mal_link": request.GET.get('mal_link'),
+            "mal_img": request.GET.get('mal_img'),
         }
-        client.service.update(id, data['name'], data['year'], data['rate'])
+        client.service.update(id, data['name'], data['rate'], data['episodes'], data['mal_link'], data['mal_img'])
         return redirect('/series/list')
     else:
         return redirect(request.META.get('HTTP_REFERER', '/'))
