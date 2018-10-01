@@ -27,7 +27,10 @@ def validate(request):
     return v.validate(data)
 
 def series(request):
-    series = client.service.all()
+    sortBy = request.GET.get('sortBy', 'name')
+    sortDir = request.GET.get('sortDir', 'ASC')
+    series = client.service.all(sortBy, sortDir)
+
     context = { 'series': series }
     return render(request, 'series/index.html', context)
 
@@ -57,7 +60,6 @@ def store(request):
         return redirect('/series/create')
 
 def update(request, id):
-    print('update')
     valid = validate(request)
     if (valid):
         data = {

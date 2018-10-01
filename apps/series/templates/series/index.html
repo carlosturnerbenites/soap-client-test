@@ -1,9 +1,41 @@
 {% extends 'templates/index.html' %}
 
 {% block content %}
+  <div>
+    <p>
+      <form action="/series/list">
+        <div class="row">
+          <div class="col sm-4">
+            <div class="form-group">
+              <label for="sortBy">Block Level</label>
+              <select name="sortBy" id="sortBy">
+                <option value="name">Nombre</option>
+                <option value="rate">Calificación</option>
+                <option value="episodes">Episodios</option>
+              </select>
+            </div>
+          </div>
+          <div class="col sm-8">
+            <fieldset class="form-group">
+              <legend>Orden</legend>
+              <label for="orderASC" class="paper-radio">
+                <input type="radio" id="orderASC" name="sortDir" value="ASC">
+                <span>Ascendiente</span>
+              </label>
+              <label for="orderDESC" class="paper-radio">
+                  <input type="radio" id="orderDESC" name="sortDir" value="DESC">
+                  <span>Descendiente</span>
+              </label>
+            </fieldset>
+          </div>
+        </div>
+        <button type="submit" class="paper-btn btn-success">Ordenar</button>
+      </form>
+    </p>
+  </div>
   <div class="row">
     {% for serie in series %}
-      <div class="col col-3">
+      <div class="col col-6 sm-4 md-4">
         <div class="card">
           <img src="{{serie.malImg}}" alt="Card example image">
 
